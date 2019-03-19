@@ -8,6 +8,7 @@
 
 namespace app\api\controller\V1;
 
+use app\api\vaildate\IDMustBePostiveInt;
 use app\api\vaildate\TestVaildate;
 use think\Validate;
 
@@ -22,13 +23,9 @@ class Banner
      */
     public function getBanner($id)
     {
-        $data = [
-            'name'=>'vendandsaa1111111111',
-            'email'=>'2259dqq.com'
-        ];
-        $vaildate = new TestVaildate();
-        $resylt = $vaildate->batch()->check($data);
-        var_dump($vaildate->getError());
+//        return 1;
+        (new IDMustBePostiveInt())->goCheck();
+        $c =1;
 
     }
 
