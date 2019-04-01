@@ -2,6 +2,7 @@
 
 namespace app\api\controller\v1;
 
+use app\api\vaildate\IDCollection;
 use think\Controller;
 use think\Request;
 
@@ -12,8 +13,8 @@ class Theme extends Controller
      * @return 一组theme模型
      */
     public function getSimpleList($ids=''){
-
-
+        (new IDCollection())->goCheck();
+        return 'success';
     }
 
 }
