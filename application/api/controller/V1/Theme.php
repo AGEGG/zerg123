@@ -3,8 +3,11 @@
 namespace app\api\controller\v1;
 
 use app\api\vaildate\IDCollection;
+use app\api\vaildate\IDMustBePostiveInt;
+use app\lib\exception\ThemeException;
 use think\Controller;
 use think\Request;
+use app\api\model\Theme as ThemeModel;
 
 class Theme extends Controller
 {
@@ -14,7 +17,26 @@ class Theme extends Controller
      */
     public function getSimpleList($ids=''){
         (new IDCollection())->goCheck();
-        return 'success';
+        $ids = explode(',',$ids);
+        $result = ThemeModel::with('topicImg,headImg')->select($ids);
+        if($result->isEmpty()) {
+            throw new ThemeException();
+        }
+        return $result;
+    }
+
+    /**
+     * @url /theme/:id
+     */
+    public function getCompleOne($id)
+    {
+        (new IDMustBePostiveInt())->goCheck();
+        $theme = ThemeModel::getThemeWithProducts($id);
+        if(!$theme) {
+            throw new ThemeException();
+        }
+        return $theme;
+
     }
 
 }
