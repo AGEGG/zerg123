@@ -30,7 +30,7 @@ class Address
         } else {
             $user->address->save($dataArry);
         }
-        return new SuccessMessage();
+        return json(new SuccessMessage(),201);
     }
 
 }
