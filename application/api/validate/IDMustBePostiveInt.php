@@ -6,7 +6,7 @@
  * Time: 20:55
  */
 
-namespace app\api\vaildate;
+namespace app\api\validate;
 
 
 

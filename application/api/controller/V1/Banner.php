@@ -8,7 +8,7 @@
 
 namespace app\api\controller\V1;
 
-use app\api\vaildate\IDMustBePostiveInt;
+use app\api\validate\IDMustBePostiveInt;
 use app\api\model\Banner as BannerModel;
 use app\lib\exception\BannerMissException;
 use app\lib\exception\ParameterException;

@@ -2,8 +2,8 @@
 
 namespace app\api\controller\v1;
 
-use app\api\vaildate\IDCollection;
-use app\api\vaildate\IDMustBePostiveInt;
+use app\api\validate\IDCollection;
+use app\api\validate\IDMustBePostiveInt;
 use app\lib\exception\ThemeException;
 use think\Controller;
 use think\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\vaildate;
+namespace app\api\validate;
 
 
 

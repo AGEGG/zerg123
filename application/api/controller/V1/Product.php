@@ -9,9 +9,9 @@
 namespace app\api\controller\V1;
 
 
-use app\api\vaildate\Count;
+use app\api\validate\Count;
 use app\api\model\Product as ProductModel;
-use app\api\vaildate\IDMustBePostiveInt;
+use app\api\validate\IDMustBePostiveInt;
 use app\lib\exception\ProduxtException;
 
 class Product
@@ -36,6 +36,17 @@ class Product
         }
         $products = $products->hidden(['summary']);
         return $products;
+    }
+
+    public function getOne($id)
+    {
+        (new IDMustBePostiveInt())->goCheck();
+        $product = ProductModel::getProductDetail($id);
+        if(!$product) {
+            throw new ProduxtException();
+        }
+        return $product;
+
     }
 
 

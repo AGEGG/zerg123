@@ -10,6 +10,16 @@ class Product extends BaseModel
         'update_time'
     ];
 
+    public function imgs()
+    {
+        return $this->hasMany('ProductImage', 'product_id', 'id');
+    }
+
+    public function properties()
+    {
+        return $this->hasMany('ProductProperty', 'product_id', 'id');
+    }
+
     public function getMainImgUrlAttr($value,$data)
     {
         return $this->prefixImgUrl($value,$data);
@@ -27,6 +37,22 @@ class Product extends BaseModel
         return $products;
     }
 
+    /**
+     * 获取商品详情
+     * @param $id
+     * @return null | Product
+     */
+    public static function getProductDetail($id)
+    {
+        $product = self::with([
+            'imgs' => function($query){
+                $query->with(['imgUrl'])
+                ->order('order','asc');
+            }
+        ])
+            ->with(['properties'])->find($id);
+        return $product;
+    }
 
 
 }

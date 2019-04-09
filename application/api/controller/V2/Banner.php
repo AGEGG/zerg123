@@ -8,11 +8,6 @@
 
 namespace app\api\controller\V2;
 
-use app\api\vaildate\IDMustBePostiveInt;
-use app\api\model\Banner as BannerModel;
-use app\lib\exception\BannerMissException;
-use app\lib\exception\ParameterException;
-use think\Exception;
 
 class Banner
 {

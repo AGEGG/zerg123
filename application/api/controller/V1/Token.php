@@ -10,7 +10,7 @@ namespace app\api\controller\V1;
 
 
 use app\api\service\UserToken;
-use app\api\vaildate\TokenGet;
+use app\api\validate\TokenGet;
 
 class Token
 {

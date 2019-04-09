@@ -6,12 +6,12 @@
  * Time: 17:00
  */
 
-namespace app\api\vaildate;
+namespace app\api\validate;
 
 
 use think\Validate;
 
-class TestVaildate extends Validate
+class TestValidate extends Validate
 {
     protected $rule = [
         'name' => 'require|max:10',
